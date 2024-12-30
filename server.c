@@ -51,3 +51,17 @@ clientsocket=accept(serversocket,(struct sockaddr*)&clientaddr,&len);
 printf("\nClient connectivity received.\n"); 
 
 printf("\nReading message from the client.\n");
+read(clientsocket,message,sizeof(message)); 
+
+printf("\nThe client has sent.%s",message); 
+
+printf("\nSending message to the client.\n"); 
+
+write(clientsocket,"YOUR MESSAGE RECEIVED.",sizeof("YOUR MESSAGE 
+
+RECEIVED.")); 
+
+close(clientsocket); 
+
+close(serversocket);
+}
