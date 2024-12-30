@@ -50,3 +50,4 @@ recv(clientsocket,message,sizeof(message),0);
 printf("\nMessage received.\t%s\n",message); 
 
 close(clientsocket);
+}
