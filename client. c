@@ -37,3 +37,16 @@ serveraddr.sin_port=htons(port);
 printf("\nTrying to connect to the server.\n"); 
 
 connect(clientsocket,(struct sockaddr*)&serveraddr,sizeof(serveraddr));
+printf("\nConnected to the server.\n"); 
+
+printf("\nSending message for server connection"); 
+
+send(clientsocket,"HI,IAM CLIENT...",sizeof("HI,IAM CLIENT..."),0); 
+
+printf("\nReceiving message from server.\n"); 
+
+recv(clientsocket,message,sizeof(message),0); 
+
+printf("\nMessage received.\t%s\n",message); 
+
+close(clientsocket);
