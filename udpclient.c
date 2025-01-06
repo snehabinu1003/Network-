@@ -1,6 +1,8 @@
-#include<netinet/in.h> 
-#include<netdb.h> 
-#include<strings.h> 
+#include <netinet/in.h> 
+#include <netdb.h> 
+#include <strings.h>
+#include <stdio.h>
+
 int main() 
 { 
 //variable to store the socket_id. 
@@ -39,3 +41,5 @@ printf("\nMessage received:\t%s\n",message);
 
 close(clientsocket);
 }
+
+
