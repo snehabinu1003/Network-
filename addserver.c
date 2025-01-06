@@ -1,4 +1,4 @@
-include <stdio.h>
+#include <stdio.h>
 
 #include <string.h>
 
@@ -16,11 +16,11 @@ int serversocket, clientsocket,port;
 
 struct sockaddr_in serveraddr,clientaddr;
 
-socklen t len;
+socklen_t len;
 
 int a,b,sum=0;
 
-serversocket=socket(AF INET, SOCK STREAM,0);
+serversocket=socket(AF_INET, SOCK_STREAM,0);
 
 struct serveraddr;
 
@@ -73,3 +73,10 @@ close(clientsocket);
 close(serversocket);
 
 }
+
+
+
+
+
+
+
