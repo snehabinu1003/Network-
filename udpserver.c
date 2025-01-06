@@ -39,3 +39,18 @@ scanf("%d",&port);
 serveraddr.sin_port=htons(port); 
 
 serveraddr.sin_addr.s_addr=INADDR_ANY;
+//binding the socket to the operating system. 
+bind(serversocket,(struct sockaddr*)&serveraddr,sizeof(serveraddr)); 
+printf("\nWaiting for the client connection\n"); 
+bzero((char*)&clientaddr,sizeof(clientaddr)); 
+len=sizeof(clientaddr); 
+//receiving message from the client. 
+recvfrom(serversocket,message,sizeof(message),0,(struct sockaddr*)&clientaddr,&len); 
+printf("\nConnection received from client.\n"); 
+printf("\nThe client has send:\t%s\n",message); 
+printf("\nSending message to the client.\n"); 
+//sending message to the client. 
+sendto(serversocket,"YOUR MESSAGE RECEIVED.",sizeof("YOUR MESSAGE 
+RECEIVED."),0,( struct sockaddr*)&clientaddr,sizeof(clientaddr)); 
+close(serversocket);
+}
