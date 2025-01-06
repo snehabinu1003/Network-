@@ -1,8 +1,7 @@
-#include<sys/types.h> 
-
-#include<netinet/in.h> 
-
-#include<netdb.h> 
+#include <sys/types.h> 
+#include <netinet/in.h> 
+#include <netdb.h> 
+#include <stdio.h>
 
 int main() 
 
@@ -50,7 +49,7 @@ printf("\nConnection received from client.\n");
 printf("\nThe client has send:\t%s\n",message); 
 printf("\nSending message to the client.\n"); 
 //sending message to the client. 
-sendto(serversocket,"YOUR MESSAGE RECEIVED.",sizeof("YOUR MESSAGE 
-RECEIVED."),0,( struct sockaddr*)&clientaddr,sizeof(clientaddr)); 
+sendto(serversocket,"YOUR MESSAGE RECEIVED.",sizeof("YOUR MESSAGE RECEIVED."),0,( struct sockaddr*)&clientaddr,sizeof(clientaddr)); 
 close(serversocket);
 }
+
