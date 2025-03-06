@@ -64,3 +64,36 @@ void main() {
         }
     }
 }
+send(client_sock, buffer, 1024, 0);
+bzero(buffer, 1024);
+recv(client_sock, buffer, 1024, 0);
+strcpy(filename, buffer);
+
+bzero(buffer, 1024);
+fptr = fopen(filename, "r");
+if (!fptr) {
+    printf("File %s does not exist\n", filename);
+    strcpy(buffer, "404");
+    send(client_sock, buffer, 1024, 0);
+}
+
+else {
+    strcpy(buffer, "200");
+    send(client_sock, buffer, 1024, 0);
+
+    while (!feof(fptr)) {
+        bzero(buffer, 1024);
+        fscanf(fptr, " %[^\n] ", buffer);
+        send(client_sock, buffer, 1024, 0);
+    }
+    bzero(buffer, 1024);
+    strcpy(buffer, "END$");
+    send(client_sock, buffer, 1024, 0);
+    fclose(fptr);
+    printf("File %s sent\n", filename);
+}
+
+else if (strcmp(buffer, "BYE") == 0) {
+    close(server_sock);
+    exit(0);
+}
